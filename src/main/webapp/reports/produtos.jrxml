@@ -126,7 +126,7 @@ ORDER BY padaria.produto.descricao ASC,
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Rua Daniel Leite, 130, Jardim Europa, CEP 19.912-234, Ourinhos - SP]]></text>
+				<text><![CDATA[Rua Do Cassetinho, 000, Jardim Do Pão, CEP 99.999-999, Ourinhos - SP]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

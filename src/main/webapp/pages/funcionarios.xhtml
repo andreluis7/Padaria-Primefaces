@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Usuários</title>
-</h:head>
-<h:body>
-	<p:growl id="mensagem" />
-	<h:form id="formListagem">
-		<p:panel header="Funcionários - Listagem">
-			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
-				paginator="true" value="#{funcionarioBean.funcionarios}"
-				var="funcionario" rows="5">
-				<f:facet name="header">
-					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
-						actionListener="#{funcionarioBean.novo}"
-						update=":mensagem :formCadastro:painel">
-						<f:actionListener
-							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
-					</p:commandButton>
-				</f:facet>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/modelo.xhtml">
 
-				<p:column headerText="Nome" sortBy="#{funcionario.pessoa.nome}"
-					filterBy="#{funcionario.pessoa.nome}">
-					<h:outputText value="#{funcionario.pessoa.nome}" />
-				</p:column>
+	<ui:define name="conteudo">
+		<h:form id="formListagem">
+			<p:panel header="Funcionários - Listagem">
+				<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+					paginator="true" value="#{funcionarioBean.funcionarios}"
+					var="funcionario" rows="5">
+					<f:facet name="header">
+						<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+							actionListener="#{funcionarioBean.novo}"
+							update=":mensagem :formCadastro:painel">
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+						</p:commandButton>
+					</f:facet>
 
-				<p:column headerText="CPF" sortBy="#{funcionario.pessoa.cpf}"
-					filterBy="#{funcionario.pessoa.cpf}">
-					<h:outputText value="#{funcionario.pessoa.cpf}" />
-				</p:column>
+					<p:column headerText="Nome" sortBy="#{funcionario.pessoa.nome}"
+						filterBy="#{funcionario.pessoa.nome}">
+						<h:outputText value="#{funcionario.pessoa.nome}" />
+					</p:column>
 
-			</p:dataTable>
-		</p:panel>
-	</h:form>
+					<p:column headerText="CPF" sortBy="#{funcionario.pessoa.cpf}"
+						filterBy="#{funcionario.pessoa.cpf}">
+						<h:outputText value="#{funcionario.pessoa.cpf}" />
+					</p:column>
 
-	<p:dialog header="Funcionários - Cadastro" widgetVar="dialogo"
-		draggable="false" resizable="false" modal="true" closable="false">
-		<h:form id="formCadastro">
-			<h:panelGrid id="painel" columns="2">
-				<p:outputLabel for="pessoa" value="Pessoa:" />
-				<p:selectOneMenu id="pessoa" filter="true"
-					value="#{funcionarioBean.funcionario.pessoa}" required="true"
-					requiredMessage="O campo 'Pessoa' é obrigatório"
-					converter="omnifaces.SelectItemsConverter">
-					<f:selectItem noSelectionOption="true"
-						itemLabel="Selecione uma pessoa" />
-					<f:selectItems value="#{funcionarioBean.pessoas}" var="pessoa"
-						itemValue="#{pessoa}" itemLabel="#{pessoa.nome} - #{pessoa.cpf}" />
-				</p:selectOneMenu>
-
-				<p:outputLabel for="carteira" value="Carteira de trabalho:" />
-				<p:password id="carteira" maxlength="8" size="10"
-					value="#{funcionarioBean.funcionario.carteiraTrabalho}"
-					required="true"
-					requiredMessage="O campo 'Carteira de tranalho' é obrigatório" />
-
-				<p:outputLabel for="dataAdmissao" value="Data de admissão" />
-				<p:calendar id="dataAdmissao"
-					value="#{funcionarioBean.funcionario.dataAdmissao}" required="true"
-					requiredMessage="O campo 'Data de Admissão' é obrigatório"
-					size="10" locale="pt_BR" />
-
-			</h:panelGrid>
-
-			<h:panelGrid columns="2">
-				<p:commandButton value="Salvar"
-					update=":mensagem :formCadastro:painel :formListagem:tabela"
-					actionListener="#{funcionarioBean.salvar}" />
-				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
-			</h:panelGrid>
+				</p:dataTable>
+			</p:panel>
 		</h:form>
-	</p:dialog>
-</h:body>
-</html>
+
+		<p:dialog header="Funcionários - Cadastro" widgetVar="dialogo"
+			draggable="false" resizable="false" modal="true" closable="false">
+			<h:form id="formCadastro">
+				<h:panelGrid id="painel" columns="2">
+					<p:outputLabel for="pessoa" value="Pessoa:" />
+					<p:selectOneMenu id="pessoa" filter="true"
+						value="#{funcionarioBean.funcionario.pessoa}" required="true"
+						requiredMessage="O campo 'Pessoa' é obrigatório"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Selecione uma pessoa" />
+						<f:selectItems value="#{funcionarioBean.pessoas}" var="pessoa"
+							itemValue="#{pessoa}" itemLabel="#{pessoa.nome} - #{pessoa.cpf}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="carteira" value="Carteira de trabalho:" />
+					<p:inputText id="carteira" maxlength="8" size="10"
+						value="#{funcionarioBean.funcionario.carteiraTrabalho}"
+						required="true"
+						requiredMessage="O campo 'Carteira de tranalho' é obrigatório" />
+
+					<p:outputLabel for="dataAdmissao" value="Data de admissão" />
+					<p:calendar id="dataAdmissao"
+						value="#{funcionarioBean.funcionario.dataAdmissao}"
+						required="true"
+						requiredMessage="O campo 'Data de Admissão' é obrigatório"
+						size="10" locale="pt_BR" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar"
+						update=":mensagem :formCadastro:painel :formListagem:tabela"
+						actionListener="#{funcionarioBean.salvar}" />
+					<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>

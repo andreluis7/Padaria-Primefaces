@@ -95,22 +95,22 @@ public class ProdutoBean implements Serializable {
 			erro.printStackTrace();
 		}
 	}
-	
+
 	public void salvar() {
 		try {
+
 			ProdutoDAO produtoDAO = new ProdutoDAO();
-			produtoDAO.merge(produto);
 
 			produto = new Produto();
-			
-			produtos = produtoDAO.listar("codigo");
 
 			FabricanteDAO fabricanteDAO = new FabricanteDAO();
-			fabricantes = fabricanteDAO.listar("codigo");
-			
+			fabricantes = fabricanteDAO.listar();
+
+			produtos = produtoDAO.listar();
+
 			Messages.addGlobalInfo("Produto salvo com sucesso");
-		} catch (RuntimeException erro) {
-			Messages.addGlobalError("Ocorreu um erro ao tentar salvar o produto");
+		} catch (Exception erro) {
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar salvar o produto");
 			erro.printStackTrace();
 		}
 	}

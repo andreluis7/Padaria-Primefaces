@@ -36,7 +36,6 @@ public class PessoaBean implements Serializable {
 		this.pessoas = pessoas;
 	}
 
-
 	@PostConstruct
 	public void listar() {
 		try {
@@ -51,7 +50,7 @@ public class PessoaBean implements Serializable {
 	public void novo() {
 		try {
 			pessoa = new Pessoa();
-			
+
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar gerar uma nova pessoa");
 			erro.printStackTrace();
@@ -59,10 +58,10 @@ public class PessoaBean implements Serializable {
 	}
 
 	public void editar(ActionEvent evento) {
-		try{
+		try {
 			pessoa = (Pessoa) evento.getComponent().getAttributes().get("pessoaSelecionada");
-			
-		}catch(RuntimeException erro){
+
+		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar selecionar uma pessoa");
 		}
 	}
@@ -71,11 +70,11 @@ public class PessoaBean implements Serializable {
 		try {
 			PessoaDAO pessoaDAO = new PessoaDAO();
 			pessoaDAO.merge(pessoa);
-			
+
 			pessoas = pessoaDAO.listar("nome");
-			
+
 			pessoa = new Pessoa();
-			
+
 			Messages.addGlobalInfo("Pessoa salva com sucesso");
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar salvar a pessoa");
@@ -84,7 +83,19 @@ public class PessoaBean implements Serializable {
 	}
 
 	public void excluir(ActionEvent evento) {
+		try {
+			pessoa = (Pessoa) evento.getComponent().getAttributes().get("pessoaSelecionada");
 
+			PessoaDAO pessoaDAO = new PessoaDAO();
+			pessoaDAO.excluir(pessoa);
+
+			pessoas = pessoaDAO.listar();
+
+			Messages.addGlobalInfo("Pessoa removida com sucesso");
+		} catch (Exception erro) {
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar remover a pessoa");
+			erro.printStackTrace();
+		}
 	}
 
 }

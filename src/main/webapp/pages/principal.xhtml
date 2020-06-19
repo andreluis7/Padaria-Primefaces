@@ -6,9 +6,158 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="/templates/modelo.xhtml">
+	template="/templates/NovoLayout.xhtml">
 
 	<ui:define name="conteudo">
+		<div class="w3-container" style="margin-top: 80px" id="showcase">
+			<h1 class="w3-xxxlarge w3-text-red">
+				<b>Conheçam nossos produtos.</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid red" class="w3-round" />
+		</div>
+
+		<!-- Photo grid (modal) -->
+		<div class="w3-row-padding">
+			<div class="w3-half">
+				<h:graphicImage url="/resources/images/padaria1.jpg"
+					style="width: 100%" onclick="onClick(this)" />
+
+				<h:graphicImage url="/resources/images/padaria2.jpeg"
+					style="width: 100%" onclick="onClick(this)" />
+
+				<h:graphicImage url="/resources/images/padaria3.jpeg"
+					style="width: 100%" onclick="onClick(this)" />
+			</div>
+
+			<div class="w3-half">
+				<h:graphicImage url="/resources/images/padaria4.jpeg"
+					style="width: 100%" onclick="onClick(this)" />
+
+				<h:graphicImage url="/resources/images/padaria5.jpeg"
+					style="width: 100%" onclick="onClick(this)" />
+
+				<h:graphicImage url="/resources/images/padaria6.jpeg"
+					style="width: 100%" onclick="onClick(this)" />
+			</div>
+		</div>
+
+		<!-- Modal for full size images on click-->
+		<div id="modal01" class="w3-modal w3-black" style="padding-top: 0"
+			onclick="this.style.display='none'">
+			<span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+			<div
+				class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+				<h:graphicImage id="img01" class="w3-image" />
+				<p id="caption"></p>
+			</div>
+		</div>
+
+		<!-- Services -->
+		<div class="w3-container" id="services" style="margin-top: 75px">
+			<h1 class="w3-xxxlarge w3-text-red">
+				<b>Um pouco da nossa história.</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid red" class="w3-round" />
+			<p>A história da Panificadora do seu Zé teve seu início em 1972
+				na cidade de Ourinhos SP, quando os fundadores arrendaram seu
+				primeiro empreendimento, na época conhecida como Padaria Rocio.
+				Cinco anos mais tarde, em 1977, os negócios já prosperavam e por
+				isso foi adquirido outro ponto. O da Padaria Gilpão, próximo ao
+				centro da cidade. Em 1978 o país passava por um período conturbado,
+				que exigiu muita criatividade, visão e determinação. Apesar de todas
+				as dificuldades enfrentadas, no dia 08 de maio do ano seguinte, em
+				1979, a família adquiriu um imóvel no centro da cidade onde
+				centralizou suas atividades. Nascia assim a Panificadora do seu Zé.
+				Daí para frente, a história encarregou-se de criar uma tradição que
+				perdura até hoje, construída com muito empenho e a dedicação. No
+				início da década de 90, a Panificadora do seu Zé passou pela
+				primeira grande expansão na sua área física. Nessa época, já era a
+				mais tradicional do município e passou a contar com área total de
+				500m²..</p>
+		</div>
+
+		<!-- Desenvolvedores -->
+		<div class="w3-container" id="designers" style="margin-top: 75px">
+			<h1 class="w3-xxxlarge w3-text-red">
+				<b>Proprietários.</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid red" class="w3-round" />
+
+		</div>
+
+		<!-- The Team -->
+		<div class="w3-row-padding w3-grayscale">
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<h:graphicImage url="https://www.w3schools.com/w3images/team2.jpg"
+						alt="John" style="width: 100%" />
+					<div class="w3-container">
+						<h3>John</h3>
+						<p class="w3-opacity">CEO Founder</p>
+						<p>Phasellus eget enim eu lectus faucibus vestibulum.
+							Suspendisse sodales pellentesque elementum.</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<h:graphicImage url="https://www.w3schools.com/w3images/team1.jpg"
+						alt="Jane" style="width: 100%" />
+					<div class="w3-container">
+						<h3>Wega</h3>
+						<p class="w3-opacity">CEO Founder</p>
+						<p>Phasellus eget enim eu lectus faucibus vestibulum.
+							Suspendisse sodales pellentesque elementum.</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<h:graphicImage url="https://www.w3schools.com/w3images/team3.jpg"
+						alt="Mike" style="width: 100%" />
+					<div class="w3-container">
+						<h3>Cleitinho</h3>
+						<p class="w3-opacity">CEO Founder</p>
+						<p>Phasellus eget enim eu lectus faucibus vestibulum.
+							Suspendisse sodales pellentesque elementum.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- End page content -->
 		
+
+		<!-- W3.CSS Container -->
+		<div class="w3-light-grey w3-container w3-padding-32"
+			style="margin-top: 75px; padding-right: 58px">
+			<p class="w3-right">
+				Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+					title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a>
+			</p>
+		</div>
+
+		<script>
+			// Script to open and close sidebar
+			function w3_open() {
+				document.getElementById("mySidebar").style.display = "block";
+				document.getElementById("myOverlay").style.display = "block";
+			}
+
+			function w3_close() {
+				document.getElementById("mySidebar").style.display = "none";
+				document.getElementById("myOverlay").style.display = "none";
+			}
+
+			// Modal Image Gallery
+			function onClick(element) {
+				document.getElementById("img01").src = element.src;
+				document.getElementById("modal01").style.display = "block";
+				var captionText = document.getElementById("caption");
+				captionText.innerHTML = element.alt;
+			}
+		</script>
+
 	</ui:define>
 </ui:composition>

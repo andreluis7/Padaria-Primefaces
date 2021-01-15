@@ -1,9 +1,6 @@
 # Projeto Padaria feito para a disciplina de Java Web Fatec Ourinhos - SP
 > Repositório dedicado ao projeto final da disciplina de java web, utilizando as técnologias (JSF-PRIMEFACES-JASPER-HIBERNATE-HTML-CSS-JAVASCRIPT-AJAX).
 
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 Para facilitar a compreensão o projeto foi dividido em pacotes 
 * Bean - Essa especificação define uma API e dita regras de configuração e comunicação entre componentes e convenções de programação.
 * Dao	- Abstrai e encapsula os mecanismos de acesso a dados escondendo os detalhes da execução da origem dos dados
